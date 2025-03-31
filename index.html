@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Calculation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<style>
+  body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  .col {
+    margin: 20px 0;
+  }
+  .label {
+    color: #594fe0;
+    font-size: large;
+  }
+</style>
+<body>
+  <div class="container">
+    <h1 style="text-align: center; margin: 10px; margin-bottom: 40px">INVOICE</h1>
+    <div class="container">
+      <div class="row">
+        <div class="date"></div>
+        <div class="col">
+          <label for="menu" class="label">Menu</label>
+          <select class="form-select form-select-lg mb-3" id="menu" aria-label="Large select example">
+            <option selected>Select</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Electronics">Electronics</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="items" class="label">Items</label>
+          <select class="form-select form-select-lg mb-3" id="items" aria-label="Large select example">
+            <option selected>Select</option>
+            <option value="Rice">Rice</option>
+            <option value="Oil">Oil</option>
+            <option value="Sugar">Sugar</option>
+            <option value="TV">TV</option>
+            <option value="Radio">Radio</option>
+            <option value="AC">AC</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-sm-7">
+          <form class="form-floating">
+            <input type="number" class="form-control qant" id="floatingInputValue" placeholder="Quantity" value="1">
+            <label for="floatingInputValue" class="label">Quantity</label>
+          </form>
+        </div>
+        <div class="col-sm">
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control disc" id="floatingInputDiscount" placeholder="Discount" value="5">
+            <label for="floatingInputDiscount" class="label">Discount (%)</label>
+          </div>
+        </div>
+        <div class="col-sm">
+          <form class="form-floating">
+            <input type="number" class="form-control rate" id="floatingInputRate" placeholder="Rate" value="100">
+            <label for="floatingInputRate" class="label">Rate</label>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <button class="btn btn-primary" type="button" onclick="result()">Display</button>
+    </div>
+    <div class="result1" style="text-align: center;"></div>
+    <div class="result2" style="text-align: center;"></div>
+    <div class="result3" style="text-align: center;"></div>
+    <div class="result4" style="text-align: center;"></div>
+    <div class="result5" style="text-align: center;"></div>
+    <div class="result6" style="text-align: center;"></div>
+  </div>
+
+  <script>
+    // Display current date and time
+    let d = new Date();
+    document.querySelector('.date').innerText = d;
+
+    function result() {
+        const menu = document.querySelector('#menu').value;
+        const item = document.querySelector('#items').value;
+        const quantity = Number(document.querySelector('.qant').value);
+        const rate = Number(document.querySelector('.rate').value);
+        const discount = Number(document.querySelector('.disc').value);
+
+        // Update the innerText of the elements directly
+        document.querySelector('.result1').innerText = "Menu: " + menu;
+        document.querySelector('.result2').innerText = "Items: " + item;
+        document.querySelector('.result3').innerText = "Quantity: " + quantity;
+        document.querySelector('.result4').innerText = "Rate: " + rate;
+        document.querySelector('.result5').innerText = "Discount: " + discount + "%";
+
+        // Calculate total
+        const total = (rate * quantity) - ((rate * quantity * discount) / 100);
+        document.querySelector('.result6').innerText = "Total: " + total;
+    }
+
+
+
+
+    // Function to update items based on selected menu
+function updateItems() {
+    const menu = document.querySelector('#menu').value;
+    const itemsSelect = document.querySelector('#items');
+    
+    // Clear existing options 
+    itemsSelect.innerHTML = '<option selected>Select</option>'; // Reset items
+
+    if (menu == 'Grocery') {
+        itemsSelect.innerHTML += '<option value="Rice">Rice</option>';
+        itemsSelect.innerHTML += '<option value="Oil">Oil</option>';
+        itemsSelect.innerHTML += '<option value="Sugar">Sugar</option>';
+    } else if (menu == 'Electronics') {
+        itemsSelect.innerHTML += '<option value="TV">TV</option>';
+        itemsSelect.innerHTML += '<option value="AC">AC</option>';
+        itemsSelect.innerHTML += '<option value="Radio">Radio</option>';
+    }
+}
+
+
+
+
+const discountInput = document.querySelector('.disc');
+    if (menu == 'Grocery') {
+        discountInput.value = 5; // Set discount to 5% for Grocery
+    } else if (menu == 'Electronics') {
+        discountInput.value = 10; // Set discount to 10% for Electronics
+    } else {
+        discountInput.value = 20; // Reset discount if no valid menu is selected
+    } 
+  </script>
+</body>
+</html>
