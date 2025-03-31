@@ -1,17 +1,17 @@
 # invoice-calculator
 This is a simple web-based invoice calculator that allows users to select items from two categories (Grocery and Electronics), input quantity, rate, and discount, and calculate the total amount dynamically.
 
-Features
+Features :-
 
-Dynamic item selection based on category
+1. Dynamic item selection based on category
 
-User inputs for quantity, rate, and discount
+2. User inputs for quantity, rate, and discount
 
-Automated total price calculation
+3. Automated total price calculation
 
-Bootstrap for responsive design
+4. Bootstrap for responsive design
 
-Technologies Used
+Technologies Used :-
 
 HTML
 
@@ -19,14 +19,14 @@ CSS (Bootstrap 5)
 
 JavaScript
 
-How to Use
+How to Use :-
 
-Select a category (Menu) (Grocery or Electronics).
+1. Select a category (Menu) (Grocery or Electronics).
 
-Choose an item from the dropdown list.
+2. Choose an item from the dropdown list.
 
-Enter the quantity, rate, and discount (default values are provided based on the category).
+3. Enter the quantity, rate, and discount (default values are provided based on the category).
 
-Click on the Display button to calculate the total price.
+4. Click on the Display button to calculate the total price.
 
-The calculated invoice details will be displayed on the screen.
+5. The calculated invoice details will be displayed on the screen.
